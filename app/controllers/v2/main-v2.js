@@ -34,6 +34,10 @@ window.deleteFood = (id) => {
 
 //////////////////// Edit food ////////////////////
 window.editFood = (id) => {
+  document.getElementById("exampleModalLabel").innerText = "Sửa món ăn";
+  document.getElementById("btnThemMon").style.display = "none";
+  document.getElementById("btnCapNhat").style.display = "block";
+
   foodServ
     .getDetail(id)
     .then((res) => {
@@ -68,6 +72,12 @@ document.getElementById("btnCapNhat").onclick = () => {
 };
 
 //////////////////// Add food ////////////////////
+document.getElementById("btnThem").onclick = () => {
+  document.getElementById("exampleModalLabel").innerText = "Thêm món mới";
+  document.getElementById("btnThemMon").style.display = "block";
+  document.getElementById("btnCapNhat").style.display = "none";
+};
+
 document.getElementById("btnThemMon").onclick = () => {
   let food = getDataForm();
 
