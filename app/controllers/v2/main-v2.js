@@ -97,12 +97,13 @@ document.getElementById("btnThemMon").onclick = () => {
 document.getElementById("selLoai").onchange = () => {
   let keyword = document.getElementById("selLoai").value;
   let arrLoai = [];
-  if (keyword == "all") {
-    fetchFoodList();
-  } else if (keyword == "loai1") {
-    foodServ
-      .getList()
-      .then((res) => {
+
+  foodServ
+    .getList()
+    .then((res) => {
+      if (keyword == "all") {
+        fetchFoodList();
+      } else if (keyword == "loai1") {
         let data = res.data;
         data.forEach((item) => {
           if (item.loai == true) {
@@ -110,14 +111,7 @@ document.getElementById("selLoai").onchange = () => {
           }
         });
         renderFoodList(arrLoai);
-      })
-      .catch((err) => {
-        console.log("🚀👾👽 ~ err:", err);
-      });
-  } else if (keyword == "loai2") {
-    foodServ
-      .getList()
-      .then((res) => {
+      } else if (keyword == "loai2") {
         let data = res.data;
         data.forEach((item) => {
           if (item.loai == false) {
@@ -125,9 +119,9 @@ document.getElementById("selLoai").onchange = () => {
           }
         });
         renderFoodList(arrLoai);
-      })
-      .catch((err) => {
-        console.log("🚀👾👽 ~ err:", err);
-      });
-  }
+      }
+    })
+    .catch((err) => {
+      console.log("🚀👾👽 ~ err:", err);
+    });
 };
