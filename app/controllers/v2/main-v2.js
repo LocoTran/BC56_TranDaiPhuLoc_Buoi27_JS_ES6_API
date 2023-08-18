@@ -37,6 +37,7 @@ window.editFood = (id) => {
   document.getElementById("exampleModalLabel").innerText = "Sửa món ăn";
   document.getElementById("btnThemMon").style.display = "none";
   document.getElementById("btnCapNhat").style.display = "block";
+  document.getElementById("foodID").setAttribute("readonly", "");
 
   foodServ
     .getDetail(id)
@@ -76,6 +77,7 @@ document.getElementById("btnThem").onclick = () => {
   document.getElementById("exampleModalLabel").innerText = "Thêm món mới";
   document.getElementById("btnThemMon").style.display = "block";
   document.getElementById("btnCapNhat").style.display = "none";
+  document.getElementById("foodID").removeAttribute("readonly");
 };
 
 document.getElementById("btnThemMon").onclick = () => {
